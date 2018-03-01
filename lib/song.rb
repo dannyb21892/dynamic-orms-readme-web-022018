@@ -3,9 +3,14 @@ require 'active_support/inflector'
 
 class Song
 
+  @@all = [1,2,3,4,5]
 
   def self.table_name
     self.to_s.downcase.pluralize
+  end
+
+  def self.all
+    @@all
   end
 
   def self.column_names
@@ -57,8 +62,4 @@ class Song
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
-
 end
-
-
-
